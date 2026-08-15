@@ -111,6 +111,7 @@ func Parse(s string) (*Expr, error) {
 	}
 	// 星期中 7 等价于 0（周日）。
 	if dow.set[7] {
+		dow.set[0] = true
 		delete(dow.set, 7)
 	}
 	return &Expr{Minute: minute, Hour: hour, Dom: dom, Month: month, Dow: dow}, nil
